@@ -18,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/Motta01/AdministrationSystem/issues"
   },
-  "homepage": "https://github.com/Motta01/AdministrationSystem#readme"
+  "homepage": "https://github.com/Motta01/AdministrationSystem#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "connect-multiparty": "^2.1.0",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.22.2",
+    "mongoose": "^5.1.5",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
 }
