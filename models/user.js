@@ -5,6 +5,6 @@ var UserSchema = Schema({
         name: String,
         userName: String,
         password: String,
-        honeypots:[{type: Schema.ObjectId, ref:'Honeypot'}]
+        honeypots: [{ type: Schema.ObjectId, ref: 'Honeypot' }]
 });
 module.exports = mongoose.model('User', UserSchema);

@@ -4,4 +4,4 @@ var Schema = mongoose.Schema;
 var HoneypotSchema = Schema({
     name: String,
 });
-module.exports = mongoose.model('Honeypot',HoneypotSchema);
+module.exports = mongoose.model('Honeypot', HoneypotSchema);

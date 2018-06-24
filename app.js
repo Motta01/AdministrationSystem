@@ -3,22 +3,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
+// cargar rutas 
+var user_routes = require('./routesController/user');
 
-//rutas {
-
-//}
-
-//Parseo a JSON de las entradas{
-app.use(bodyParser.urlencoded({extended:false}));
+//Parseo a JSON de las entradas
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//}
 
-//Configurar cabeceras http {
-
-//}
-
-// Cargar las rutas {
-
-//}
-
-module.exports= app;
+app.use('/api', user_routes);
+module.exports = app;
