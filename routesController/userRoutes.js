@@ -2,9 +2,12 @@
 
 var express = require('express');
 var AcountController = require('../acountControllers/acountController');
-
 var api = express.Router();
-api.get('/prueba', AcountController.prueba);
+
+var md_Auth = require('../middlewares/authenticated');
+
+api.get('/prueba', md_Auth.ensureAuth, AcountController.prueba);
 api.post('/saveuser', AcountController.saveUser);
+api.post('/loginuser', AcountController.loginUser);
 
 module.exports = api;
