@@ -7,7 +7,9 @@ function saveHoneypot(req, res) {
     var params = req.body;
     honeypot.name = params.name;
     honeypot.owner = params.owner;
-        if (honeypot.name && honeypot.owner) {
+    honeypot.ip = params.ip;
+
+        if (honeypot.name && honeypot.owner && honeypot.ip) {
             honeypot.save((err, userStored) => {
                 if (err) {
                     res.status(500).send(err);
