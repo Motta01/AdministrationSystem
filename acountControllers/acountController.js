@@ -9,8 +9,6 @@ function saveUser(req, res) {
     user.userName = params.userName;
     user.password = null;
     user.honeypots = null;
-    console.log({ params });
-    console.log({ user });
 
     if (params.password) {
         bcrypt.hash(params.password, null, null, (err, hash) => {

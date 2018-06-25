@@ -6,11 +6,8 @@ function saveHoneypot(req, res) {
     var honeypot = new Honeypot();
     var params = req.body;
     honeypot.name = params.name;
-    honeypot.userName = params.userName;
-    console.log({ params });
-    console.log({ honeypot });
-
-        if (honeypot.name) {
+    honeypot.owner = params.owner;
+        if (honeypot.name && honeypot.owner) {
             honeypot.save((err, userStored) => {
                 if (err) {
                     res.status(500).send(err);

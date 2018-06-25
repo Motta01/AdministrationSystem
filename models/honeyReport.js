@@ -5,9 +5,8 @@ var Schema = mongoose.Schema;
 var HoneyReport = Schema({
         id: String,
         honeyName: String,
-        user: { type: Schma.ObjectId, ref: 'user' },
-        attacker: String,
-        port: String,
-        description: String
+        user: String,
+        ipAttacker: String,
+        port: String
 });
 module.exports = mongoose.model('Reports', HoneyReport);
