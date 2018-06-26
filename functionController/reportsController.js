@@ -3,6 +3,7 @@
 var Reports = require('../models/honeyReport');
 var Gerential_report = require('../models/gerentialReport');
 var Honeypot = require('../models/honeypot');
+var mongoosePaginate = require('mongoose-pagination');
 
 function reportCatcher(req, res) {
 
@@ -34,8 +35,9 @@ function reportCatcher(req, res) {
                 }
             });
             Honeypot.findOne({ ip: params.local_host.toLowerCase() }, (error, honeypotStorade) => {
-                if (honeypotStorade!=null) {
-                    gerentialReport.honey_name = honeypotStorade.honey_name;
+                if (honeypotStorade != null) {
+
+                    gerentialReport.honey_name = honeypotStorade.name;
                     gerentialReport.owner = honeypotStorade.owner;
                     gerentialReport.dangerous_level = '';
                     gerentialReport.description = '';
@@ -59,7 +61,6 @@ function reportCatcher(req, res) {
                 }
             });
         } else {
-            console.log(2);
             report.local_host = params.local_host;
             report.protocol = params.protocol;
             report.session = params.session;
@@ -84,8 +85,59 @@ function reportCatcher(req, res) {
         }
     });
 }
+function getReports(req, res) {
+    var session = req.params.session;
+    var itemsPerPage = 4;
+    Reports.find({ session: session }).sort('date').paginate(session, itemsPerPage, (err, reports, totalReport) => {
+        if (!err) {
+            if (reports) {
+                return res.status(200).send({
+                    pages: totalReport,
+                    reports: reports
+                });
+            } else {
+                res.status(404).send({ message: 'there are not reports' });
+            }
+        } else {
+            res.status(500).send(error);
+        }
+    });
+}
 
+
+function getGerentialReport(req, res) {
+    var id = req.params.id;
+    if (id) {
+        Gerential_report.findOne({ _id: id }, (err, reportStorade) => {
+            if (!err) {
+                return res.status(200).send(reportStorade);
+            } else {
+                res.status(500).send('Error to find the gerential report');
+            }
+        });
+    } else {
+        var consolidated = [];
+        Gerential_report.find((err, reports) => {
+            if (!err) {
+                for (let j in reports) {
+                    var aux = {
+                        id: reports[j]._id,
+                        name: reports[j].honey_name,
+                        date: reports[j].date
+                    }
+                    consolidated.push(aux);
+                }
+                res.status(200).send(consolidated);
+            } else {
+                res.status(500).send(err);
+            }
+        }).sort('date');
+    }
+}
 
 module.exports = {
-    reportCatcher
+    reportCatcher,
+    getGerentialReport,
+    getReports
+
 }

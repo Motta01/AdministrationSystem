@@ -8,7 +8,7 @@ function saveHoneypot(req, res) {
     honeypot.name = params.name;
     honeypot.owner = params.owner;
     honeypot.ip = params.ip;
-
+        
         if (honeypot.name && honeypot.owner && honeypot.ip) {
             honeypot.save((err, userStored) => {
                 if (err) {
