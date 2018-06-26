@@ -42,7 +42,7 @@ function loginUser(req, res) {
                 bcrypt.compare(password, user.password, (err, check) => {
                     if (check) {
                         if (params.gethash) {
-                            res.status(200).send({token: jwt.createToken(user)});
+                            res.status(200).send({ token: jwt.createToken(user) });
                         } else {
                             res.status(200).send({ user: user });
                         }
@@ -60,12 +60,11 @@ function loginUser(req, res) {
     });
 }
 
-function prueba(req, res) {
-
-    res.status(200).send({
-        message: 'probando controlador'
-    });
+function prueba() {
+    var req ='hola cmo estas'
+    suportPrueba(req);
 }
+
 module.exports = {
     prueba,
     saveUser,

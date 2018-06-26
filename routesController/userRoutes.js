@@ -6,7 +6,7 @@ var api = express.Router();
 
 var md_Auth = require('../middlewares/authenticated');
 
-api.get('/prueba', md_Auth.ensureAuth, AcountController.prueba);
+api.get('/prueba', AcountController.prueba);
 api.post('/saveuser', AcountController.saveUser);
 api.post('/loginuser', AcountController.loginUser);
 

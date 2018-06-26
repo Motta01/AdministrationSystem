@@ -4,25 +4,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var HoneyReport = Schema({
         // Detallado de todo lo que esta en el honeypot.
-        id: String,
-        honey_ip: String,
-        honey_name: String,
+        local_host: String,
+        protocol: String,
         session: String,
-        user: String,
-        local_port: String,
+        date: String,
+        data: String,
+        event: String,
+        millisecond: String,
+        date_time: String,
+        data_hash: String,
         service: String,
-        ip_attacker: String,
-        port_attacker: String,
-
-        /*
-        general service
-                Date: String,
-                honey_name: String,
-                honey_ip: String,
-                service: String,
-                local_port: String,
-                port_attacker: String,
-                ip_attacker: String,
-        */
+        local_port: String,
+        remote_port: String,
+        bytes: String,
+        time: String,
+        remote_host: String
 });
 module.exports = mongoose.model('Reports', HoneyReport);
