@@ -103,8 +103,6 @@ function getReports(req, res) {
         }
     });
 }
-
-
 function getGerentialReport(req, res) {
     var id = req.params.id;
     if (id) {
