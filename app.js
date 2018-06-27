@@ -12,6 +12,14 @@ var reports_routes = require('./routesController/reportsRoutes');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Accees-Control-Allow-Header','Authorization, X-API-KEY,Origin,X-Requested-Whit,Content-Type,Accept,Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methos','GET,POST,OPTIONS,PUT,DELETE');
+    res.header('Allow','GET,POST,OPTIONS,PUT,DELETE');
+    next();
+});
+
 app.use('/api', user_routes);
 app.use('/api', honey_routes);
 app.use('/api', reports_routes);
