@@ -1,12 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    {{ title }}
-  </h1>
+<div class="login" *ngIf="identity">
+  <div class="title-login">
+    <h3>
+      login
+    </h3>
+    <h5>Escribe tu usuario y contraseña</h5>
+  </div>
+  <div class="form-login">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <p>
+        <label>Nombre de usuario</label>
+        <input type="text" #userName="ngModel" name="userName" [(ngModel)]="user.userName" class="form-username" required />
+        <span *ngIf="!userName.valid && userName.touched ">Rellene todo los campos</span>
+      </p>
+      <p>
+        <label>Contraseña</label>
+        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-password" required />
+      </p>
+      <input type="submit" value="Entrar" class="btn-btn-primary" />
+    </form>
+  </div>
 </div>
-<head>
-
-</head>
-<body>
-
-</body>
