@@ -1,18 +1,19 @@
-
-.paper{
+.paper {
   background: #808080;
 }
-.login{
+
+.login {
   position: absolute;
   width: 400px;
   height: 400px;
-  top:50%;
-  left:50%;
-  margin-left:-200px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
   margin-top: -200px;
-  border:1px solid #808080;
-  padding:5px;
+  border: 1px solid #808080;
+  padding: 5px;
 }
+
 .form-login {
   position: absolute;
   text-align: center;
@@ -21,9 +22,27 @@
   margin-right: 100px;
   margin-left: 100px;
 }
-.title-login{
+
+.title-login {
   position: relative;
   text-align: center;
   width: 400px;
   height: 100px;
+}
+
+.top-bar {
+  position: absolute;
+  width: 75%;
+  height: 40px;
+  left: 50%;
+  margin-left: -37.5%;
+  border: 1px solid #818181;
+  background: #808080;
+}
+
+.buttonShutdown {
+  position: relative;
+  top: 25%;
+  left: 80%;
+  right: 100px;
 }

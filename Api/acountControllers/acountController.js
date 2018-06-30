@@ -2,6 +2,8 @@
 var bcrypt = require('bcrypt-nodejs')
 var User = require('../models/user');
 var jwt = require('../services/jwt');
+var bodyParser = require('body-parser');
+
 function saveUser(req, res) {
     var user = new User();
     var params = req.body;
@@ -35,7 +37,6 @@ function loginUser(req, res) {
     var params = req.body;
     var userName = params.userName;
     var password = params.password;
-
     User.findOne({ userName: userName.toLowerCase() }, (err, user) => {
         if (!err) {
             if (user) {
@@ -47,22 +48,22 @@ function loginUser(req, res) {
                             res.status(200).send({ user: user });
                         }
                     } else {
-                        res.status(200).send({ message: 'User have not been logged' });
+                        res.status(404).send({ message: 'User have not been logged' });
                     }
                 });
             } else {
-                res.status(200).send({ message: 'User not found' });
+                res.status(404).send({ message: 'User not found' });
             }
-
         } else {
             res.status(500).send({ message: 'Petition Error' });
         }
     });
 }
 
-function prueba() {
-    var req ='hola cmo estas'
-    suportPrueba(req);
+function prueba(req, res) {
+    var tar = 'hola como estas'
+    console.log(tar);
+    res.status(200).send({ tar });
 }
 
 module.exports = {

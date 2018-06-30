@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="paper">
-  <div class="login" *ngIf="identity">
+  <div class="login" *ngIf="identity==null">
     <div class="title-login">
       <h3>
         login
@@ -8,6 +8,9 @@
       <h5>Escribe tu usuario y contraseña</h5>
     </div>
     <div class="form-login">
+      <div class="alert alert-success" *ngIf="errorMessage!=null">
+        <strong>Success!</strong> {{errorMessage }}
+      </div>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <p>
           <label>Nombre de usuario</label>
@@ -21,5 +24,12 @@
         <input type="submit" value="Entrar" class="btn-btn-primary" />
       </form>
     </div>
+
+  </div>
+  <div class="top-bar" *ngIf="identity!=null">
+    <div  class="buttonShutdown">
+        <button type="button" class="dash-button btn btn-primary" (click)="shutDown()" id="shutdown">Cerrar sesion</button>
+    </div>
+
   </div>
 </div>
