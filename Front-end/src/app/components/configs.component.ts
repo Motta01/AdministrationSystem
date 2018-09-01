@@ -10,7 +10,7 @@ export class Configs implements OnInit {
 
     constructor(){
     }
-
+ 
     ngOnInit(){
     }
 
