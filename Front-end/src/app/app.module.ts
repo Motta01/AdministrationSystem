@@ -8,6 +8,7 @@ import {ReportComponent} from './components/report.component';
 import {Dashboards} from './components/dashboards.component';
 import {Configs } from './components/configs.component';
 import {Init} from './components/init.component';
+import {Admin} from './components/admin.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {Init} from './components/init.component';
     ReportComponent,
     Dashboards,
     Configs,
-    Init
+    Init,
+    Admin
   ],
   imports: [
     BrowserModule,

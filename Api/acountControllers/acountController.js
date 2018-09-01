@@ -9,7 +9,7 @@ function saveUser(req, res) {
     var params = req.body;
     user.name = params.name;
     user.userName = params.userName;
-    user.password = null;
+    user.password = params.password;
     user.honeypots = null;
 
     if (params.password) {

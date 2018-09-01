@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+
   }
   public onSubmit() {
     this.errorMessage = null;
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit {
         }
       }
     );
+    console.log(this.user);
   }
 
   public shutDown() {

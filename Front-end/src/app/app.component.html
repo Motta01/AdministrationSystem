@@ -27,33 +27,40 @@
 
   </div>
 </div>
+
+
+
+
+
 <div class="content-page" *ngIf="identity!=null">
 
   <!-- ******************************* BAR********************* -->
   <div class="nav col-md-12">
-    <header class="col-md-2" (click)= "showInit()">
+    <header class="col-md-2" (click)="showInit()">
       <img src="../../assets/image/unicartagena.png">
     </header>
     <div class="bar-body col-md-8">
-      <div >
+      <div>
         <div style="text-align: center">
           <h4>Sietema de honeypots</h4>
         </div>
       </div>
       <hr>
       <div style="margin-left: 36%">
-        <a class="col-md-2">
-          <span class="glyphicon glyphicon-level-up" aria-hidden="true" (click)="showReports()"></span>
-          <!-- <h5>Registros</h5> -->
-        </a>
-        <a class="col-md-2">
-          <span class="glyphicon glyphicon-signal" aria-hidden="true" (click)="showDashboards()"></span>
-          <!-- <h5> Estadisticas</h5> -->
-        </a>
-        <a class="col-md-2">
-          <span class="glyphicon glyphicon-cog" aria-hidden="true" (click)="showConfigs()"></span>
-          <!-- <h5>Configuraciones</h5> -->
-        </a>
+        <div *ngIf="identity.name==ivan">
+          <a class="col-md-2">
+            <span class="glyphicon glyphicon-level-up" aria-hidden="true" (click)="showReports()"></span>
+            <!-- <h5>Registros</h5> -->
+          </a>
+          <a class="col-md-2">
+            <span class="glyphicon glyphicon-signal" aria-hidden="true" (click)="showDashboards()"></span>
+            <!-- <h5> Estadisticas</h5> -->
+          </a>
+          <a class="col-md-2">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true" (click)="showConfigs()"></span>
+            <!-- <h5>Configuraciones</h5> -->
+          </a>
+        </div>
       </div>
     </div>
     <footer class="col-md-2">
@@ -66,17 +73,22 @@
   <!-- FIN -->
 
   <div class="content">
-    <div *ngIf="navigator == 0">
-      <init></init>
+    <div *ngIf="identity.name==ivan">
+      <div *ngIf="navigator == 0">
+        <init></init>
+      </div>
+      <div *ngIf="navigator == 1">
+        <reportComponent></reportComponent>
+      </div>
+      <div *ngIf="navigator == 2">
+        <dashboards></dashboards>
+      </div>
+      <div *ngIf="navigator == 3">
+        <configs></configs>
+      </div>
     </div>
-    <div *ngIf="navigator == 1">
-      <reportComponent></reportComponent>
-    </div>
-    <div *ngIf="navigator == 2">
-      <dashboards></dashboards>
-    </div>
-    <div *ngIf="navigator == 3">
-      <configs></configs>
+    <div *ngIf="identity.name!=ivan">
+      <pre>ivan</pre>
     </div>
   </div>
 </div>
