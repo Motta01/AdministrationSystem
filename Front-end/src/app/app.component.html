@@ -47,7 +47,7 @@
       </div>
       <hr>
       <div style="margin-left: 36%">
-        <div *ngIf="identity.name==ivan">
+        <div *ngIf="identity.name != 'ivan'">
           <a class="col-md-2">
             <span class="glyphicon glyphicon-level-up" aria-hidden="true" (click)="showReports()"></span>
             <!-- <h5>Registros</h5> -->
@@ -73,7 +73,7 @@
   <!-- FIN -->
 
   <div class="content">
-    <div *ngIf="identity.name==ivan">
+    <div *ngIf="identity.name != 'ivan'">
       <div *ngIf="navigator == 0">
         <init></init>
       </div>
@@ -87,8 +87,7 @@
         <configs></configs>
       </div>
     </div>
-    <div *ngIf="identity.name!=ivan">
-      <pre>ivan</pre>
+    <div *ngIf="identity.name == 'ivan'">
     </div>
   </div>
 </div>
