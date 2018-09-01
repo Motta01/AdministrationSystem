@@ -1,0 +1,22 @@
+.image{
+    margin-top: 130px;
+    /* margin-left: 10px; */
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.text{
+    margin-top: 40px;
+    float: right;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+.image img {
+    margin: auto;
+    padding-top: 10px;
+    width: 100%;
+    height: auto;
+    border: none;
+}

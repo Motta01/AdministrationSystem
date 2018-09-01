@@ -1,0 +1,66 @@
+<div class="content">
+    <div class="content-header">
+        <div class="title"> Reportes</div>
+    </div>
+    <div class="content-body">
+        <div class="filter">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-3">
+                <label>Honeypot</label>
+                <input type="text">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3">
+                <label>Date</label>
+                <input type="text">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <button class="btn btn-defoult 	glyphicon glyphicon-search" style="margin-top: 10px;"></button>
+            </div>
+        </div>
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">#</th>
+                    <th class="text-left">Honeypot</th>
+                    <th class="text-left">Service</th>
+                    <th class="text-left">Date</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                <tr *ngFor="let report of reports; let i = index">
+                    <td class="text-left" style="width: 5%">{{i+1}}</td>
+                    <td class="text-left" style="width: 45%">{{report['name']}}</td>
+                    <td class="text-left" style="width: 30%">{{report['service']}}</td>
+                    <td class="text-left" style="width: 20%">{{report['date']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator">
+        <ul class="pagination">
+            <li>
+                <a href="#">«</a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a class="active" href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">»</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content-footer">
+    </div>
+</div>

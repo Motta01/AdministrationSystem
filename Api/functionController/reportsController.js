@@ -38,16 +38,16 @@ function reportCatcher(req, res) {
                 if (honeypotStorade != null) {
 
                     gerentialReport.honey_name = honeypotStorade.name;
-                    gerentialReport.owner = honeypotStorade.owner;
+                    gerentialReport.owner = honeypotStorade.owner;      
                     gerentialReport.dangerous_level = '';
                     gerentialReport.description = '';
                     gerentialReport.session = params.session;
                     gerentialReport.date = params.date;
                     gerentialReport.service = params.service;
                     gerentialReport.local_host = params.local_host;
-                    gerentialReport.local_port = params.local_host;
+                    gerentialReport.local_port = params.local_port;
                     gerentialReport.remote_port = params.remote_port;
-                    gerentialReport.remote_host = params.remote_port;
+                    gerentialReport.remote_host = params.remote_host;
 
                     gerentialReport.save((er, gerentialReportStored) => {
                         if (!er) {
@@ -117,15 +117,21 @@ function getGerentialReport(req, res) {
         var consolidated = [];
         Gerential_report.find((err, reports) => {
             if (!err) {
-                for (let j in reports) {
+                for (let report of reports) {
+                    let name;
+                    if(report.honey_name){
+                        name = report.honey_name;
+                    }else{
+                        name = report._id;
+                    }
                     var aux = {
-                        id: reports[j]._id,
-                        name: reports[j].honey_name,
-                        date: reports[j].date
+                        name:name,
+                        service: report.service,
+                        date: report.date
                     }
                     consolidated.push(aux);
                 }
-                res.status(200).send(consolidated);
+                res.status(200).send({data :consolidated});
             } else {
                 res.status(500).send(err);
             }
