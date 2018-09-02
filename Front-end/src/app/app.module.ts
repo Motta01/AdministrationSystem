@@ -9,6 +9,8 @@ import {Dashboards} from './components/dashboards.component';
 import {Configs } from './components/configs.component';
 import {Init} from './components/init.component';
 import {Admin} from './components/admin.component';
+import{PieChartComponent} from './components/pieChart.component'
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {Admin} from './components/admin.component';
     Dashboards,
     Configs,
     Init,
-    Admin
+    Admin,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
