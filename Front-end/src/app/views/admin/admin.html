@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="content-header">
+        <div class="title"> Cuentas</div>
+    </div>
+    <div class="content-body">
+        <div class="content-div  text-center">
+            <div class="recuadros">
+                <form>
+                        <div class="form-group">
+                                <h3>Agregar usuario</h3>
+                            </div>
+                    <div class="input_form form-group">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Usuario">
+                    </div>
+                    <div class="input_form form-group">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contraseña">
+                    </div>
+                    <div class="input_form form-group">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Correo">
+                    </div>
+                    <div class="form-group">
+                            <button type="button" class="btn btn-success">Agregar</button>
+                        </div>
+                </form>
+            </div>
+            <div class="recuadros">
+                <table class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Usuario</th>
+                            <th class="text-left">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        <tr *ngFor="let report of reports; let i = index">
+                            <td class="text-left">{{i+1}}</td>
+                            <td class="text-left">{{report['date']}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="content-footer">
+    </div>
+</div>
