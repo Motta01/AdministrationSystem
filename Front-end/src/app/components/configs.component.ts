@@ -7,7 +7,7 @@ import { Component, OnInit} from '@angular/core';
 })
 
 export class Configs implements OnInit {
-
+    
     constructor(){
     }
  

@@ -26,6 +26,20 @@ export class UserService {
         let options = new RequestOptions({ headers: headers });
         return this._http.post(this.url + 'loginuser', params, options).pipe(map(res => res.json()));
     }
+    public save(userToSave, gethash = 'null') {
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this._http.post(this.url + 'saveuser', userToSave, options).pipe(map(res => res.json()));
+    }
+    public delete(id) {
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        console.log(this.url + 'deleteaccount/' + id);
+        return this._http.delete(this.url + 'deleteaccount/' + id, options).pipe(map(res => res.json()));
+    }
+
     public getIdentity() {
         let identity = JSON.parse(localStorage.getItem('identity'));
         if (identity != "undefined") {

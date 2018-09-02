@@ -64,7 +64,6 @@ export class AppComponent implements OnInit {
         }
       }
     );
-    console.log(this.user);
   }
 
   public shutDown() {
