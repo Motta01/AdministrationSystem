@@ -20,9 +20,24 @@ function saveHoneypot(req, res) {
         } else {    
             res.status(200).send({ message: 'Complete all the field ' })
         }
-
+}
+function selectNoNamedHoneypot(req, res) {
+    Honeypot.find({ name: null ,owner: null }, (err, honeypots) => {
+        if (!err) {
+            if (honeypots) {
+                return res.status(200).send({
+                    honeypots: honeypots
+                });
+            } else {
+                res.status(404).send({ message: 'there are not reports' });
+            }
+        } else {
+            res.status(500).send(error);
+        }
+    });
 }
 
 module.exports = {
-    saveHoneypot
+    saveHoneypot,
+    selectNoNamedHoneypot
 }

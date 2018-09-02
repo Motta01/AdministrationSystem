@@ -38,7 +38,7 @@ function reportCatcher(req, res) {
                 if (honeypotStorade != null) {
 
                     gerentialReport.honey_name = honeypotStorade.name;
-                    gerentialReport.owner = honeypotStorade.owner;      
+                    gerentialReport.owner = honeypotStorade.owner;
                     gerentialReport.dangerous_level = '';
                     gerentialReport.description = '';
                     gerentialReport.session = params.session;
@@ -57,7 +57,17 @@ function reportCatcher(req, res) {
                         }
                     });
                 } else {
-                    console.log(error);
+                    var honeypot = new Honeypot();
+                    honeypot.name = null;
+                    honeypot.ip = params.local_host;
+                    honeypot.name = null;
+                    honeypot.save((err, userStored) => {
+                        if (err) {
+                            res.status(500).send(err);
+                        } else {
+                            res.status(200).send({ userStored });
+                        }
+                    });
                 }
             });
         } else {
@@ -85,6 +95,7 @@ function reportCatcher(req, res) {
         }
     });
 }
+
 function getReports(req, res) {
     var session = req.params.session;
     var itemsPerPage = 4;
@@ -103,6 +114,7 @@ function getReports(req, res) {
         }
     });
 }
+
 function getGerentialReport(req, res) {
     var id = req.params.id;
     if (id) {
@@ -119,19 +131,19 @@ function getGerentialReport(req, res) {
             if (!err) {
                 for (let report of reports) {
                     let name;
-                    if(report.honey_name){
+                    if (report.honey_name) {
                         name = report.honey_name;
-                    }else{
+                    } else {
                         name = report._id;
                     }
                     var aux = {
-                        name:name,
+                        name: name,
                         service: report.service,
                         date: report.date
                     }
                     consolidated.push(aux);
                 }
-                res.status(200).send({data :consolidated});
+                res.status(200).send({ data: consolidated });
             } else {
                 res.status(500).send(err);
             }
