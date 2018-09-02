@@ -7,16 +7,17 @@
             <form>
                 <div style="margin-top:30px;">
                     <label>Honeypot</label>
-                    <select class="form-control" name="select" id="selected" style="width: 70%;margin-left:15%">
-                        <option value="">Seleccionar...</option>
+                    <select class="form-control" name="select" id="selected" style="width: 70%;margin-left:15%" #ip="ngModel" [(ngModel)]="honeypot.ip"
+                        required>
+                        <option [value]="" selected>Seleccionar...</option>
+                        <option [value]="user.ip" *ngFor="let user of users_no_named">{{user.ip}}</option>
                     </select>
                 </div>
                 <div style="margin-top:30px; margin-bottom: 30px;">
-                    <label>Nombre a asignar</label>
-                    <input class="form-control" type="text" style="width: 70%;margin-left:15%">
+                    <input class="form-control" type="text" placeholder="Nombre a asignar" style="width: 70%;margin-left:15%" #name="ngModel" name="name" [(ngModel)]="honeypot.name" required>
                 </div>
                 <div>
-                    <button class="btn btn-default">Guardar</button>
+                    <button class="btn btn-default" (click)="saveHoneypot()">Guardar</button>
                 </div>
             </form>
         </div>
