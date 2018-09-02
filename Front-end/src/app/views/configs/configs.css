@@ -67,5 +67,13 @@
     border-bottom-style: solid;
     border-width: 1px;
     border-color: #c5c9d1; 
-
+}
+.filter{
+    margin: auto;
+    width: 90%;
+    min-height: 290px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #8d94a1;
+    border-radius: 3px;
 }

@@ -30,6 +30,32 @@ function saveUser(req, res) {
     } else {
         res.status(500).send({ message: 'No data' });
     }
+}
+function selectUser(req, res) {
+    User.find({ name: { $ne: 'ivan' } }, (err, users) => {
+        if (!err) {
+            if (users) {
+                return res.status(200).send({
+                    users: users
+                });
+            } else {
+                res.status(404).send({ message: 'there are not reports' });
+            }
+        } else {
+            res.status(500).send(error);
+        }
+    });
+}
+
+function deleteAccount(req, res) {
+    let id = req.params.id;
+    User.deleteOne({ _id: id }, (err, response) => {
+        if (!err) {
+            res.status(200).send({ response: response });
+        } else {
+            res.status(500).send({ error: err });
+        }
+    })
 
 }
 
@@ -69,5 +95,7 @@ function prueba(req, res) {
 module.exports = {
     prueba,
     saveUser,
-    loginUser
+    loginUser,
+    selectUser,
+    deleteAccount
 }
