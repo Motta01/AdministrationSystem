@@ -6,21 +6,21 @@
         <div class="content-div  text-center">
             <div class="recuadros">
                 <form>
-                        <div class="form-group">
-                                <h3>Agregar usuario</h3>
-                            </div>
+                    <div class="form-group">
+                        <h3>Agregar usuario</h3>
+                    </div>
                     <div class="input_form form-group">
                         <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" placeholder="Usuario">
                     </div>
                     <div class="input_form form-group">
-                        <input type="password" class="form-control"  #password="ngModel" name="password" [(ngModel)]="user.password" placeholder="Contraseña">
+                        <input type="password" class="form-control" #password="ngModel" name="password" [(ngModel)]="user.password" placeholder="Contraseña">
                     </div>
                     <div class="input_form form-group">
-                        <input type="text" class="form-control"  #userName="ngModel" name="userName" [(ngModel)]="user.userName" placeholder="Correo">
+                        <input type="text" class="form-control" #userName="ngModel" name="userName" [(ngModel)]="user.userName" placeholder="Correo">
                     </div>
                     <div class="form-group">
-                            <button type="button" class="btn btn-success" (click)="agregar()">Agregar</button>
-                        </div>
+                        <button type="button" class="btn btn-success" (click)="agregar()">Agregar</button>
+                    </div>
                 </form>
             </div>
             <div class="recuadros">
@@ -32,9 +32,9 @@
                         </tr>
                     </thead>
                     <tbody class="table-hover">
-                        <tr *ngFor="let report of reports; let i = index">
-                            <td class="text-left">{{i+1}}</td>
-                            <td class="text-left">{{report['date']}}</td>
+                        <tr *ngFor="let data of list_users; let i = index">
+                            <td class="text-left" style="width: 50%">{{data.name}}</td>
+                            <td class="text-center" style="width: 50%"><button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" (click)="delete(data._id)"></button></td>
                         </tr>
                     </tbody>
                 </table>

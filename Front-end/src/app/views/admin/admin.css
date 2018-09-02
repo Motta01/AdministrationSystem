@@ -161,7 +161,7 @@ td:last-child {
 }
 
 th.text-left {
-    text-align: left;
+    text-align: center;
 }
 
 th.text-center {
@@ -173,7 +173,7 @@ th.text-right {
 }
 
 td.text-left {
-    text-align: left;
+    text-align: center;
 }
 
 td.text-center {

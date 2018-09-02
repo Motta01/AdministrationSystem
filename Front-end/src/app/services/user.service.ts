@@ -58,4 +58,11 @@ export class UserService {
         }
         return this.token;
     }
+
+    public getUsers() {
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(this.url + '/selectuser', options).pipe(map(res => res.json()));
+    }
 }
