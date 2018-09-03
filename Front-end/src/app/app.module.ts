@@ -9,7 +9,6 @@ import {Dashboards} from './components/dashboards.component';
 import {Configs } from './components/configs.component';
 import {Init} from './components/init.component';
 import {Admin} from './components/admin.component';
-import{PieChartComponent} from './components/pieChart.component'
 
 
 @NgModule({
@@ -20,7 +19,6 @@ import{PieChartComponent} from './components/pieChart.component'
     Configs,
     Init,
     Admin,
-    PieChartComponent
   ],
   imports: [
     BrowserModule,
