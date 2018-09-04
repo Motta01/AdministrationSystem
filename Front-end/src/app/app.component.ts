@@ -87,5 +87,9 @@ export class AppComponent implements OnInit {
   public showConfigs() {
     this.navigator = 3;
   }
+  public showUsers() {
+    this.navigator = 4;
+  }
+
 }
 
