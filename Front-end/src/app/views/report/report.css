@@ -9,6 +9,7 @@
     border-width: 2px;
     border-radius: 5px;
     border-color: #bdbbbb;
+    box-shadow: 1px 5px 15px 0 rgba(0, 0, 0,5);
 }
 
 .content-header {

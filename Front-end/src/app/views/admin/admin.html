@@ -3,41 +3,45 @@
         <div class="title"> Cuentas</div>
     </div>
     <div class="content-body">
-        <div class="content-div  text-center">
-            <div class="recuadros">
-                <form>
-                    <div class="form-group">
-                        <h3>Agregar usuario</h3>
-                    </div>
-                    <div class="input_form form-group">
-                        <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" placeholder="Usuario">
-                    </div>
-                    <div class="input_form form-group">
-                        <input type="password" class="form-control" #password="ngModel" name="password" [(ngModel)]="user.password" placeholder="Contraseña">
-                    </div>
-                    <div class="input_form form-group">
-                        <input type="text" class="form-control" #userName="ngModel" name="userName" [(ngModel)]="user.userName" placeholder="Correo">
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-success" (click)="agregar()">Agregar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="recuadros">
-                <table class="table-fill">
-                    <thead>
-                        <tr>
-                            <th class="text-left">Usuario</th>
-                            <th class="text-left">Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        <tr *ngFor="let data of list_users; let i = index">
-                            <td class="text-left" style="width: 50%">{{data.name}}</td>
-                            <td class="text-center" style="width: 50%"><button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" (click)="delete(data._id)"></button></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <configs></configs>
+        <div class="recuadros-content">
+            <div class="content-div  text-center">
+                <div class="recuadros">
+                    <form>
+                        <div class="form-group">
+                            <h3>Agregar usuario</h3>
+                        </div>
+                        <div class="input_form form-group">
+                            <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" placeholder="Usuario">
+                        </div>
+                        <div class="input_form form-group">
+                            <input type="password" class="form-control" #password="ngModel" name="password" [(ngModel)]="user.password" placeholder="Contraseña">
+                        </div>
+                        <div class="input_form form-group">
+                            <input type="text" class="form-control" #userName="ngModel" name="userName" [(ngModel)]="user.userName" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" (click)="agregar()">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="recuadros">
+                    <table class="table-fill">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Usuario</th>
+                                <th class="text-left">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-hover">
+                            <tr *ngFor="let data of list_users; let i = index">
+                                <td class="text-left" style="width: 50%">{{data.name}}</td>
+                                <td class="text-center" style="width: 50%"><button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash"
+                                        (click)="delete(data._id)"></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

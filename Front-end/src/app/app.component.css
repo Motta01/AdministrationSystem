@@ -21,6 +21,8 @@
   border-left-style: solid;
   border-right-style: solid;
   border-color: #ddd6d6;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0,5);
+
 }
 
 .form-login {
