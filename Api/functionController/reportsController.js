@@ -119,11 +119,20 @@ function getReports(req, res) {
 }
 
 function getGerentialReport(req, res) {
-    var id = req.params.id;
-    if (id) {
-        Gerential_report.findOne({ _id: id }, (err, reportStorade) => {
+    var name = req.params.name;
+    var date = req.params.fecha;
+    if (date) {
+        Gerential_report.find({date: date }, (err, reportStorade) => {
             if (!err) {
-                return res.status(200).send(reportStorade);
+                return res.status(200).send({ data: reportStorade });
+            } else {
+                res.status(500).send('Error to find the gerential report');
+            }
+        });
+    } else if (name) {
+        Gerential_report.find({ honey_name: name}, (err, reportStorade) => {
+            if (!err) {
+                return res.status(200).send({ data: reportStorade });
             } else {
                 res.status(500).send('Error to find the gerential report');
             }
@@ -136,15 +145,16 @@ function getGerentialReport(req, res) {
                     let name;
                     if (report.honey_name) {
                         name = report.honey_name;
-                    } else {
-                        name = report._id;
+
+                        var aux = {
+                            honey_name: name,
+                            service: report.service,
+                            date: report.date,
+                            local_port: report.local_port,
+                            remote_host: report.remote_host
+                        }
+                        consolidated.push(aux);
                     }
-                    var aux = {
-                        name: name,
-                        service: report.service,
-                        date: report.date
-                    }
-                    consolidated.push(aux);
                 }
                 res.status(200).send({ data: consolidated });
             } else {

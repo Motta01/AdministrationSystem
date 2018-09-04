@@ -12,27 +12,55 @@ import { GLOBAL } from '../services/global';
 export class ReportComponent implements OnInit {
     public title: string;
     public reports;
+    public honeypots = [];
     public identity;
     public token;
+    public named;
+    public date;
+    constructor(private _http: Http) {
+        this.url = GLOBAL.url;
+        this.named = '';
+        this.date='';
+
+    }
     public url: string;
     ngOnInit() {
-        this.showGerentialReports().subscribe(
+        this.showGerentialReports();
+        this.getHoneypot();
+
+    }
+
+
+    public getHoneypot() {
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(this.url + 'getallhoneypot', options).pipe(map(res => res.json())).subscribe(
+            response => {
+                this.honeypots = response.honeypots;
+            },
+            error => {
+                this.honeypots = null;
+            }
+        );
+    }
+    public showGerentialReports() {
+        let add = '';
+        if (this.named!='') {
+            add = '/' + this.named;
+            console.log(add);
+        }
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(this.url + 'getgerentialreports' + add, options).pipe(map(res => res.json())).subscribe(
             response => {
                 this.reports = response.data;
+                console.log(this.reports);
             },
             error => {
                 this.reports = null;
             }
         );
-    }
-
-    constructor(private _http: Http) {
-        this.url = GLOBAL.url;
-    }
-    public showGerentialReports() {
-        let headers = new Headers({ 'content-type': 'application/json' });
-        headers.append('Accept', 'application/json');
-        let options = new RequestOptions({ headers: headers });
-        return this._http.get(this.url + 'getgerentialreports', options).pipe(map(res => res.json()));
     }
 }

@@ -51,7 +51,24 @@ function selectNoNamedHoneypot(req, res) {
     });
 }
 
+function selectAll(req,res){
+    Honeypot.find({}, (err, honeypots) => {
+        if (!err) {
+            if (honeypots) {
+                return res.status(200).send({
+                    honeypots: honeypots
+                });
+            } else {
+                res.status(404).send({ message: 'there are not reports' });
+            }
+        } else {
+            res.status(500).send(error);
+        }
+    });
+}
+
 module.exports = {
     saveHoneypot,
-    selectNoNamedHoneypot
+    selectNoNamedHoneypot,
+    selectAll
 }
