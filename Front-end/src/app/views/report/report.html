@@ -3,74 +3,107 @@
         <div class="title"> Reportes</div>
     </div>
     <div class="content-body">
-        <form>
-            <div class="filter text-center">
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-3">
-                    <select class="form-control" aria-placeholder="Seleccione un nombre" name="selector" style="margin-top: 6px;" id="select" #name="ngModel" [(ngModel)]="named" >
-                        <option value="">Seleccionar....</option>
-                        <option value="{{honeypot.name}}" *ngFor="let honeypot of honeypots">{{honeypot.name}}<option>
-                    </select>
-                </div>
-                <div class="col-lg-1">
-                    <button class="btn btn-default 	glyphicon glyphicon-search" (click)="showGerentialReports()" style="margin-top: 5px;"></button>
+        <div *ngIf="isSelection">
+            <button class="btn-default btn-sm " (click)="changed(report)" style="margin-left: 30px;">
+                <i class="glyphicon glyphicon-circle-arrow-left"></i>
+            </button>
+
+            <div class="filtered">
+                <h3 style="text-align: center"><b><u>Descripción detallada</u></b></h3><br>
+
+                <table class="table-fill">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        <tr>
+                            <td class="text-left" style="text-align: left;width: 20%;"><b>Honeypot atacado:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['honey_name']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="text-align: left"><b>Fecha de ataque:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['date']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="text-align: left"><b>Servicio atacado:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['service']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="text-align: left"><b>Puerto atacado:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['local_port']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="text-align: left"><b>IP del atacante:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['remote_host']}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="text-align: left"><b>Protocolo:</b></td>
+                            <td class="text-left" style="text-align: left">{{selected['protocol']}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="filtered">
+                        <h3 style="text-align: center"><b><u>Recomendaciones generales</u></b></h3><br>
 
                 </div>
-                <!-- <div class="col-lg-3">
-                    <input class="form-control" type="text" style="margin-top: 6px;" placeholder="Fecha">
-                </div> -->
-                <div class="col-lg-1"></div>
-                <!-- <div class="col-lg-2">
-                    <button class="btn btn-default 	glyphicon glyphicon-search" (click)="showGerentialReports()" style="margin-top: 5px;"></button>
-                </div> -->
+                <div class="filtered">
+                        <h3 style="text-align: center"><b><u>Recomendaciones especificas</u></b></h3><br>
+
+                </div>
+                
+
             </div>
-        </form>
-        <table class="table-fill">
-            <thead>
-                <tr>
-                    <th class="text-left">#</th>
-                    <th class="text-left">Honeypot</th>
-                    <th class="text-left">Servicio</th>
-                    <th class="text-left">Puerto atacado</th>
-                    <th class="text-left">Host remoto</th>
-                    <th class="text-left">Date</th>
-                </tr>
-            </thead>
-            <tbody class="table-hover">
-                <tr *ngFor="let report of reports; let i = index">
-                    <td class="text-left" style="width: 4%">{{i+1}}</td>
-                    <td class="text-left" style="width: 25%">{{report['honey_name']}}</td>
-                    <td class="text-left" style="width: 15%">{{report['service']}}</td>
-                    <td class="text-left" style="width: 15%">{{report['local_port']}}</td>
-                    <td class="text-left" style="width: 15%">{{report['remote_host']}}</td>
-                    <td class="text-left" style="width: 15%">{{report['date']}}</td>
-                </tr>
-            </tbody>
-        </table>
+        </div>
+        <div *ngIf="!isSelection">
+            <form>
+                <div class="filter text-center">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control" aria-placeholder="Seleccione un nombre" name="selector" style="margin-top: 6px;" id="select"
+                            #name="ngModel" [(ngModel)]="named">
+                            <option value="">Seleccionar....</option>
+                            <option value="{{honeypot.name}}" *ngFor="let honeypot of honeypots">{{honeypot.name}}
+                                <option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1">
+                        <button class="btn btn-default	glyphicon glyphicon-search" (click)="showGerentialReports()" style="margin-top: 5px;"></button>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </form>
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-left">#</th>
+                        <th class="text-left">Honeypot</th>
+                        <th class="text-left">Servicio</th>
+                        <th class="text-left">Puerto atacado</th>
+                        <th class="text-left">Host remoto</th>
+                        <th class="text-left">Date</th>
+                        <th class="text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <tr *ngFor="let report of reports; let i = index">
+                        <td class="text-left">{{i+1}}</td>
+                        <td class="text-left">{{report['honey_name']}}</td>
+                        <td class="text-left">{{report['service']}}</td>
+                        <td class="text-left">{{report['local_port']}}</td>
+                        <td class="text-left">{{report['remote_host']}}</td>
+                        <td class="text-left">{{report['date']}}</td>
+                        <td class="text-left">
+                            <button class="btn-default btn-sm " (click)="changed(report)">
+                                <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- <div class="paginator">
-        <ul class="pagination">
-            <li>
-                <a href="#">«</a>
-            </li>
-            <li>
-                <a href="#">1</a>
-            </li>
-            <li>
-                <a class="active" href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">»</a>
-            </li>
-        </ul>
-    </div> -->
     <div class="content-footer">
     </div>
 </div>

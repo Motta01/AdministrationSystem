@@ -17,6 +17,8 @@ export class ReportComponent implements OnInit {
     public token;
     public named;
     public date;
+    public selected = null;
+    public isSelection = false;
     constructor(private _http: Http) {
         this.url = GLOBAL.url;
         this.named = '';
@@ -63,4 +65,9 @@ export class ReportComponent implements OnInit {
             }
         );
     }
+    public changed( data = null ){
+    this.isSelection = !this.isSelection;
+    this.selected = data;
+    }
+    
 }

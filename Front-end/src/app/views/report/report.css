@@ -46,6 +46,19 @@
     border-color: #8d94a1;
 }
 
+.filtered{
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #bdbbbb;
+    width: 86%;
+    min-height: 290px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #8d94a1;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0,5);
+}
 .table-fill {
     background: white;
     border-radius: 3px;
@@ -90,14 +103,6 @@ ul.pagination li a {
     text-decoration: none;
 }
 
-button {
-    font-size: 10px;
-    background-color: white;
-    border-style:solid;
-    border-color: #979797; 
-    border-width: 1px;
-
-}
 .glyphicon {
     font-size: 14px;
     display: block;
@@ -176,7 +181,7 @@ tr:last-child td:last-child {
 td {
     background: #FFFFFF;
     padding: 4px;
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
     font-weight: bold;
     font-size: small;
@@ -189,7 +194,7 @@ td:last-child {
 }
 
 th.text-left {
-    text-align: left;
+    text-align: center;
 }
 
 th.text-center {
@@ -201,7 +206,7 @@ th.text-right {
 }
 
 td.text-left {
-    text-align: left;
+    text-align: center;
 }
 
 td.text-center {

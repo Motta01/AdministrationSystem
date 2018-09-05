@@ -48,6 +48,8 @@ function reportCatcher(req, res) {
                         gerentialReport.local_port = params.local_port;
                         gerentialReport.remote_port = params.remote_port;
                         gerentialReport.remote_host = params.remote_host;
+                        gerentialReport.protocol = params.protocol;
+
 
                         gerentialReport.save((err, gerentialReportStored) => {
                             if (err) {
@@ -151,7 +153,8 @@ function getGerentialReport(req, res) {
                             service: report.service,
                             date: report.date,
                             local_port: report.local_port,
-                            remote_host: report.remote_host
+                            remote_host: report.remote_host,
+                            protocol : report.protocol
                         }
                         consolidated.push(aux);
                     }

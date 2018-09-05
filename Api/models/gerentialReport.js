@@ -14,7 +14,8 @@ var GerentialReport = Schema({
     remote_port: String,
     remote_host: String,
     dangerous_level: String,
-    description: String
+    description: String,
+    protocol: String
 
 });
 module.exports = mongoose.model('Gerential_report', GerentialReport);
