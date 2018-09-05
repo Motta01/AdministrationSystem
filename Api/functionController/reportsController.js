@@ -302,15 +302,23 @@ function recomendation(req, res) {
     }
     var specific = [
         {
-            service: 'mysql',
+            service: 'MySQL',
             description: 'Continuar con el puerto abierto y configurar el servicio para determinar que IP’s se les puede aceptar una petición de conexión.',
         },
         {
-            service: 'dns',
+            service: 'PostgreSQL',
+            description: 'Continuar con el puerto abierto y configurar el servicio para determinar que IP’s se les puede aceptar una petición de conexión.',
+        },
+        {
+            service: 'DNS',
             description: 'Usar DNS over TLS, para cifrar y ajustar consultas y respuestas del Sistema de nombres de dominio (DNS) a través del protocolo de Seguridad de la capa de transporte (TLS), con el objetivo de aumentar la privacidad y la seguridad del servicio de manipulación de datos DNS a través de ataques man-in-the-middle .',
         },
         {
             service: 'Telnet.Windows',
+            description: 'Aconsejable usar SSH debido a que los datos enviados por telnet se envían en texto plano en contraste con SSH, que encripta los datos.'
+        },
+        {
+            service: 'Telnet',
             description: 'Aconsejable usar SSH debido a que los datos enviados por telnet se envían en texto plano en contraste con SSH, que encripta los datos.'
         },
         {
