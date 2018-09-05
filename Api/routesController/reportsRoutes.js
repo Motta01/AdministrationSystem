@@ -9,6 +9,7 @@ api.get('/servicesdashboards', Report.servicesDashboards);
 api.get('/portdashboards', Report.portDashboards);
 api.get('/remote_hostDashboards', Report.remote_hostDashboards);
 api.get('/getgerentialreports/:name?', Report.getGerentialReport);
+api.get('/recomendation/:service?', Report.recomendation);
 
 
 module.exports = api;

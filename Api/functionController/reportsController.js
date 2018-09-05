@@ -4,6 +4,7 @@ var Reports = require('../models/honeyReport');
 var Gerential_report = require('../models/gerentialReport');
 var Honeypot = require('../models/honeypot');
 var mongoosePaginate = require('mongoose-pagination');
+var Global_description = require('../services/Description');
 
 function reportCatcher(req, res) {
     var params = req.body;
@@ -290,6 +291,11 @@ function remote_hostDashboards(req, res) {
     }).sort('date');
 }
 
+function recomendation(req, res){
+    var service = req.params.service;
+
+}
+
 
 module.exports = {
     reportCatcher,
@@ -297,6 +303,6 @@ module.exports = {
     getReports,
     servicesDashboards,
     portDashboards,
-    remote_hostDashboards
-
+    remote_hostDashboards,
+    recomendation
 }
