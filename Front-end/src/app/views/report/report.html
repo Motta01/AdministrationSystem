@@ -13,14 +13,17 @@
                         <option value="{{honeypot.name}}" *ngFor="let honeypot of honeypots">{{honeypot.name}}<option>
                     </select>
                 </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-3">
-                    <input class="form-control" type="text" style="margin-top: 6px;" placeholder="Fecha">
-                </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-2">
+                <div class="col-lg-1">
                     <button class="btn btn-default 	glyphicon glyphicon-search" (click)="showGerentialReports()" style="margin-top: 5px;"></button>
+
                 </div>
+                <!-- <div class="col-lg-3">
+                    <input class="form-control" type="text" style="margin-top: 6px;" placeholder="Fecha">
+                </div> -->
+                <div class="col-lg-1"></div>
+                <!-- <div class="col-lg-2">
+                    <button class="btn btn-default 	glyphicon glyphicon-search" (click)="showGerentialReports()" style="margin-top: 5px;"></button>
+                </div> -->
             </div>
         </form>
         <table class="table-fill">
@@ -46,7 +49,7 @@
             </tbody>
         </table>
     </div>
-    <div class="paginator">
+    <!-- <div class="paginator">
         <ul class="pagination">
             <li>
                 <a href="#">«</a>
@@ -67,7 +70,7 @@
                 <a href="#">»</a>
             </li>
         </ul>
-    </div>
+    </div> -->
     <div class="content-footer">
     </div>
 </div>

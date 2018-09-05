@@ -122,7 +122,7 @@ function getGerentialReport(req, res) {
     var name = req.params.name;
     var date = req.params.fecha;
     if (date) {
-        Gerential_report.find({date: date }, (err, reportStorade) => {
+        Gerential_report.find({ date: date }, (err, reportStorade) => {
             if (!err) {
                 return res.status(200).send({ data: reportStorade });
             } else {
@@ -130,7 +130,7 @@ function getGerentialReport(req, res) {
             }
         });
     } else if (name) {
-        Gerential_report.find({ honey_name: name}, (err, reportStorade) => {
+        Gerential_report.find({ honey_name: name }, (err, reportStorade) => {
             if (!err) {
                 return res.status(200).send({ data: reportStorade });
             } else {
@@ -163,10 +163,137 @@ function getGerentialReport(req, res) {
         }).sort('date');
     }
 }
+function removeDuplicates(originalArray, ) {
+    var newArray = [];
+    var lookupObject = {};
+
+    for (var i in originalArray) {
+        lookupObject[originalArray[i]] = originalArray[i];
+    }
+
+    for (i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+    return newArray;
+}
+function servicesDashboards(req, res) {
+    var services = [];
+    Gerential_report.find((err, reports) => {
+        if (!err) {
+            var index = 0;
+            reports.forEach(report => {
+                var into = true;
+                var count = 0;
+                reports.forEach(report2 => {
+                    if (report.service == report2.service) {
+                        count++;
+                        reports.slice(index, 1);
+                    }
+                    index++;
+                });
+                var service = {
+                    service: report.service,
+                    count: count
+                };
+                services.forEach(data => {
+                    if (data.service == service.service) {
+                        into = false;
+                    }
+                });
+                if (into) {
+                    services.push(service);
+                }
+                count = 0;
+                index = 0;
+            });
+            res.status(200).send(services)
+        } else {
+            res.status(500).send(err);
+        }
+    }).sort('date');
+}
+
+function portDashboards(req, res) {
+    var ports = [];
+    Gerential_report.find((err, reports) => {
+        if (!err) {
+            var index = 0;
+            reports.forEach(report => {
+                var into = true;
+                var count = 0;
+                reports.forEach(report2 => {
+                    if (report.local_port == report2.local_port) {
+                        count++;
+                        reports.slice(index, 1);
+                    }
+                    index++;
+                });
+                var port = {
+                    port: report.local_port,
+                    count: count
+                };
+                ports.forEach(data => {
+                    if (data.port == port.port) {
+                        into = false;
+                    }
+                });
+                if (into) {
+                    ports.push(port);
+                }
+                count = 0;
+                index = 0;
+            });
+            res.status(200).send(ports);
+        } else {
+            res.status(500).send(err);
+        }
+    }).sort('date');
+}
+
+function remote_hostDashboards(req, res) {
+    var hosts = [];
+    Gerential_report.find((err, reports) => {
+        if (!err) {
+            var index = 0;
+            reports.forEach(report => {
+                var into = true;
+                var count = 0;
+                reports.forEach(report2 => {
+                    if (report.remote_host == report2.remote_host) {
+                        count++;
+                        reports.slice(index, 1);
+                    }
+                    index++;
+                });
+                var host = {
+                    host: report.remote_host,
+                    count: count
+                };
+                hosts.forEach(data => {
+                    if (data.host == host.host) {
+                        into = false;
+                    }
+                });
+                if (into) {
+                    hosts.push(host);
+                }
+                count = 0;
+                index = 0;
+            });
+            res.status(200).send(hosts);
+        } else {
+            res.status(500).send(err);
+        }
+    }).sort('date');
+}
+
 
 module.exports = {
     reportCatcher,
     getGerentialReport,
-    getReports
+    getReports,
+    servicesDashboards,
+    portDashboards,
+    remote_hostDashboards
 
 }
