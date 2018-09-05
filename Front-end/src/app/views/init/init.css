@@ -1,14 +1,13 @@
 .image{
-    margin-top: 130px;
+    margin: auto;
+    margin-top: 50px;
     /* margin-left: 10px; */
-    float: left;
+    float: center;
     width: 50%;
     height: 100%;
 }
 .text{
     margin-top: 40px;
-    float: right;
-    width: 50%;
     height: 100%;
     text-align: center;
 }
