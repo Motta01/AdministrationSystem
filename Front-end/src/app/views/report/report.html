@@ -11,7 +11,7 @@
             <div class="filtered1">
                 <h3 style="text-align: center"><b><u>Descripción detallada</u></b></h3><br>
 
-                <table class="table-fill" >
+                <table class="table-fill">
                     <thead>
                         <tr>
                         </tr>
@@ -45,10 +45,29 @@
                 </table>
                 <div class="filtered2">
                     <h3 style="text-align: center"><b><u>Recomendaciones generales</u></b></h3><br>
-
+                    <ul style="margin-right: 40px; margin-bottom: 20px;">
+                        <li type="disc">
+                            <P ALIGN="justify">{{normalRecomendation.all1}}</P>
+                        </li>
+                        <li type="disc">
+                            <P ALIGN="justify">{{normalRecomendation.all2}}</P>
+                        </li>
+                        <li type="disc">
+                            <P ALIGN="justify">{{normalRecomendation.all3}}</P>
+                        </li>
+                        <li type="disc">
+                            <P ALIGN="justify">{{normalRecomendation.all4}}</P>
+                        </li>
+                        <li type="disc">
+                            <P ALIGN="justify">{{normalRecomendation.all5}}</P>
+                        </li>
+                    </ul>
                 </div>
                 <div class="filtered2">
                     <h3 style="text-align: center"><b><u>Recomendaciones especificas</u></b></h3><br>
+                    <ul style="margin-right: 40px;">
+                        <P ALIGN="justify">{{specificRecomendation}}</P>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -77,8 +96,6 @@
                         <th class="text-left">#</th>
                         <th class="text-left">Honeypot</th>
                         <th class="text-left">Servicio</th>
-                        <th class="text-left">Puerto atacado</th>
-                        <th class="text-left">Host remoto</th>
                         <th class="text-left">Date</th>
                         <th class="text-left">Acciones</th>
                     </tr>
@@ -88,8 +105,6 @@
                         <td class="text-left">{{i+1}}</td>
                         <td class="text-left">{{report['honey_name']}}</td>
                         <td class="text-left">{{report['service']}}</td>
-                        <td class="text-left">{{report['local_port']}}</td>
-                        <td class="text-left">{{report['remote_host']}}</td>
                         <td class="text-left">{{report['date']}}</td>
                         <td class="text-left">
                             <button class="btn-default btn-sm " (click)="changed(report)">

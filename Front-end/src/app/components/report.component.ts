@@ -19,6 +19,8 @@ export class ReportComponent implements OnInit {
     public date;
     public selected = null;
     public isSelection = false;
+    public normalRecomendation ;
+    public specificRecomendation ;
     constructor(private _http: Http) {
         this.url = GLOBAL.url;
         this.named = '';
@@ -40,6 +42,20 @@ export class ReportComponent implements OnInit {
         return this._http.get(this.url + 'getallhoneypot', options).pipe(map(res => res.json())).subscribe(
             response => {
                 this.honeypots = response.honeypots;
+            },
+            error => {
+                this.honeypots = null;
+            }
+        );
+    }
+    public getRecomendation() {
+        let headers = new Headers({ 'content-type': 'application/json' });
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(this.url + 'recomendation/'+ this.selected['service'] , options).pipe(map(res => res.json())).subscribe(
+            response => {
+                this.normalRecomendation = response.recomendationToSend.normal;
+                this.specificRecomendation = response.recomendationToSend.specific;
             },
             error => {
                 this.honeypots = null;
@@ -68,6 +84,7 @@ export class ReportComponent implements OnInit {
     public changed( data = null ){
     this.isSelection = !this.isSelection;
     this.selected = data;
+    this.getRecomendation()
     }
     
 }
