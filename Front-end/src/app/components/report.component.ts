@@ -19,12 +19,18 @@ export class ReportComponent implements OnInit {
     public date;
     public selected = null;
     public isSelection = false;
-    public normalRecomendation ;
-    public specificRecomendation ;
+    public normalRecomendation = {
+        all1: '',
+        all2: '',
+        all3: '',
+        all4: '',
+        all5: ''
+    };
+    public specificRecomendation;
     constructor(private _http: Http) {
         this.url = GLOBAL.url;
         this.named = '';
-        this.date='';
+        this.date = '';
 
     }
     public url: string;
@@ -52,9 +58,13 @@ export class ReportComponent implements OnInit {
         let headers = new Headers({ 'content-type': 'application/json' });
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        return this._http.get(this.url + 'recomendation/'+ this.selected['service'] , options).pipe(map(res => res.json())).subscribe(
+        return this._http.get(this.url + 'recomendation/' + this.selected['service'], options).pipe(map(res => res.json())).subscribe(
             response => {
-                this.normalRecomendation = response.recomendationToSend.normal;
+                this.normalRecomendation.all1 = response.recomendationToSend.normal.all1;
+                this.normalRecomendation.all2 = response.recomendationToSend.normal.all2;
+                this.normalRecomendation.all3 = response.recomendationToSend.normal.all3;
+                this.normalRecomendation.all4 = response.recomendationToSend.normal.all4;
+                this.normalRecomendation.all5 = response.recomendationToSend.normal.all5;
                 this.specificRecomendation = response.recomendationToSend.specific;
             },
             error => {
@@ -64,9 +74,8 @@ export class ReportComponent implements OnInit {
     }
     public showGerentialReports() {
         let add = '';
-        if (this.named!='') {
+        if (this.named != '') {
             add = '/' + this.named;
-            console.log(add);
         }
         let headers = new Headers({ 'content-type': 'application/json' });
         headers.append('Accept', 'application/json');
@@ -74,17 +83,15 @@ export class ReportComponent implements OnInit {
         return this._http.get(this.url + 'getgerentialreports' + add, options).pipe(map(res => res.json())).subscribe(
             response => {
                 this.reports = response.data;
-                console.log(this.reports);
             },
             error => {
                 this.reports = null;
             }
         );
     }
-    public changed( data = null ){
-    this.isSelection = !this.isSelection;
-    this.selected = data;
-    this.getRecomendation()
+    public changed(data = null) {
+        this.isSelection = !this.isSelection;
+        this.selected = data;
+        this.getRecomendation()
     }
-    
 }

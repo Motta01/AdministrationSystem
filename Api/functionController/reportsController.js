@@ -4,7 +4,6 @@ var Reports = require('../models/honeyReport');
 var Gerential_report = require('../models/gerentialReport');
 var Honeypot = require('../models/honeypot');
 var mongoosePaginate = require('mongoose-pagination');
-var Global_description = require('../services/Description');
 
 
 function reportCatcher(req, res) {
