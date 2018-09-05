@@ -210,7 +210,7 @@ function servicesDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send(services)
+            res.status(200).send({data:services})
         } else {
             res.status(500).send(err);
         }
@@ -247,7 +247,7 @@ function portDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send(ports);
+            res.status(200).send({data:ports});
         } else {
             res.status(500).send(err);
         }
@@ -284,7 +284,7 @@ function remote_hostDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send(hosts);
+            res.status(200).send({data:hosts});
         } else {
             res.status(500).send(err);
         }

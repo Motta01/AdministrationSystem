@@ -37,7 +37,6 @@ export class ReportComponent implements OnInit {
     ngOnInit() {
         this.showGerentialReports();
         this.getHoneypot();
-
     }
 
 
