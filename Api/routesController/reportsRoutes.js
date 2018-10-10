@@ -4,6 +4,7 @@ var Report = require('../functionController/reportsController');
 
 var api = express.Router();
 api.post('/catcherofreports', Report.reportCatcher);
+api.post('/saveRec', Report.saveRecomendation);
 api.get('/getreports/:session', Report.getReports);
 api.get('/servicesdashboards', Report.servicesDashboards);
 api.get('/portdashboards', Report.portDashboards);

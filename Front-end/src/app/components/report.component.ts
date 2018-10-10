@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Response, Headers, RequestOptions, Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { GLOBAL } from '../services/global';
+import { Honeypot } from '../models/honeypot';
 
 @Component({
     selector: 'reportComponent',
@@ -46,7 +47,12 @@ export class ReportComponent implements OnInit {
         let options = new RequestOptions({ headers: headers });
         return this._http.get(this.url + 'getallhoneypot', options).pipe(map(res => res.json())).subscribe(
             response => {
-                this.honeypots = response.honeypots;
+                
+                response.honeypots.forEach(honeypot => {
+                    if(honeypot.name != null){
+                        this.honeypots.push(honeypot);
+                    }
+                });
             },
             error => {
                 this.honeypots = null;
@@ -64,13 +70,17 @@ export class ReportComponent implements OnInit {
                 this.normalRecomendation.all3 = response.recomendationToSend.normal.all3;
                 this.normalRecomendation.all4 = response.recomendationToSend.normal.all4;
                 this.normalRecomendation.all5 = response.recomendationToSend.normal.all5;
+
+                if(response.recomendationToSend.specific != 'undefined')
                 this.specificRecomendation = response.recomendationToSend.specific;
+
             },
             error => {
                 this.honeypots = null;
             }
         );
     }
+    
     public showGerentialReports() {
         let add = '';
         if (this.named != '') {
@@ -91,6 +101,8 @@ export class ReportComponent implements OnInit {
     public changed(data = null) {
         this.isSelection = !this.isSelection;
         this.selected = data;
-        this.getRecomendation()
+        if(this.selected){
+            this.getRecomendation()
+        }
     }
 }

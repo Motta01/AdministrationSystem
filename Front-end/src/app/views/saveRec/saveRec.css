@@ -1,0 +1,65 @@
+.content {
+    background-color: white;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 20px;
+    width: 95%;
+    height: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #bdbbbb;
+    box-shadow: 1px 5px 15px 0 rgba(0, 0, 0,5);
+}
+
+.content-header {
+    background-color: #bdbbbb;
+    height: 80px;
+    width: 100%;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: #8d94a1;
+}
+
+.title {
+    font-size: 48px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    text-decoration: black;
+    margin-left: 30px;
+}
+
+.content-body {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    height: 100%;
+    width: 100%;
+    min-height: 250px;
+}
+
+.content-footer {
+    background-color: #bdbbbb;
+    height: 40px;
+    width: 100%;
+    border-top-style: solid;
+    border-width: 2px;
+    border-color: #8d94a1;
+}
+.filter{
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #bdbbbb;
+    width: 86%;
+    min-height: 290px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #8d94a1;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0,5);
+}
+.inputService{
+    margin:auto;
+    margin-top: 24px;
+    width: 80%; 
+}   

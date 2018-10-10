@@ -2,6 +2,7 @@
 
 var Reports = require('../models/honeyReport');
 var Gerential_report = require('../models/gerentialReport');
+var Recommendation = require('../models/recommendation');
 var Honeypot = require('../models/honeypot');
 var mongoosePaginate = require('mongoose-pagination');
 
@@ -132,7 +133,8 @@ function getGerentialReport(req, res) {
                 res.status(500).send('Error to find the gerential report');
             }
         });
-    } else if (name) {
+    }
+     else if (name) {
         Gerential_report.find({ honey_name: name }, (err, reportStorade) => {
             if (!err) {
                 return res.status(200).send({ data: reportStorade });
@@ -140,7 +142,8 @@ function getGerentialReport(req, res) {
                 res.status(500).send('Error to find the gerential report');
             }
         });
-    } else {
+    }
+     else {
         var consolidated = [];
         Gerential_report.find((err, reports) => {
             if (!err) {
@@ -210,7 +213,7 @@ function servicesDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send({data:services})
+            res.status(200).send({ data: services })
         } else {
             res.status(500).send(err);
         }
@@ -247,7 +250,7 @@ function portDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send({data:ports});
+            res.status(200).send({ data: ports });
         } else {
             res.status(500).send(err);
         }
@@ -284,7 +287,7 @@ function remote_hostDashboards(req, res) {
                 count = 0;
                 index = 0;
             });
-            res.status(200).send({data:hosts});
+            res.status(200).send({ data: hosts });
         } else {
             res.status(500).send(err);
         }
@@ -340,21 +343,40 @@ function recomendation(req, res) {
     ]
     var service = req.params.service;
     var recomendationToSend = {}
-    var normal={
-            all1: all.description1,
-            all2: all.description2,
-            all3: all.description3,
-            all4: all.description4,
-            all5: all.description5,
-        }
-        recomendationToSend.normal =normal;
-    
-    specific.forEach(rec => {
-        if (rec.service == service) {
-            recomendationToSend.specific = rec.description;
+    var normal = {
+        all1: all.description1,
+        all2: all.description2,
+        all3: all.description3,
+        all4: all.description4,
+        all5: all.description5,
+    }
+    recomendationToSend.normal = normal;
+    Recommendation.findOne({ service: service }, (error, recommendation) => {
+        if (!error) {
+            if (recommendation) {
+                recomendationToSend.specific = recommendation.description;
+            }
+            res.status(200).send({ recomendationToSend });
+            return;
+        } else {
+            console.log('error');
+            res.status(500).send({ ERROR: err });
         }
     });
-    res.status(200).send({ recomendationToSend });
+}
+
+function saveRecomendation(req, res) {
+    var dataRequest = req.body;
+    var recommendation = new Recommendation();
+    recommendation.service = dataRequest.service;
+    recommendation.description = dataRequest.description;
+    recommendation.save((err, recomendationStorade) => {
+        if (!err) {
+            res.status(200).send({ recomendationStorade });
+        } else {
+            res.status(500).send({ ERROR: err });
+        }
+    });
 }
 
 
@@ -365,5 +387,6 @@ module.exports = {
     servicesDashboards,
     portDashboards,
     remote_hostDashboards,
-    recomendation
+    recomendation,
+    saveRecomendation
 }

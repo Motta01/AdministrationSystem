@@ -1,0 +1,23 @@
+<div class="content">
+    <div class="content-header">
+        <div class="title">Guardar recomendaciones</div>
+    </div>
+    
+    <div class="content-body">
+        <form>
+            <div class="filter">
+                <div class="inputService">
+                    <label>Servicio</label>
+                    <input class="form-control" type="text" name="ngModel" [(ngModel)]="service.service" required>
+                </div>
+                <div class="inputService">
+                    <label>Descripcion</label>
+                    <textarea class="form-control" style="height:120px;" name="ngModel" [(ngModel)]="service.description" required></textarea>
+                    <button class="btn btn-primary " (click)="saveService()" style="margin-top:24px; margin-bottom: 24px;margin-left:85%;">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="content-footer">
+    </div>
+</div>

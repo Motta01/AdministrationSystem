@@ -9,6 +9,7 @@ import {Dashboards} from './components/dashboards.component';
 import {Configs } from './components/configs.component';
 import {Init} from './components/init.component';
 import {Admin} from './components/admin.component';
+import {SaveRec} from './components/saveRec.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {Admin} from './components/admin.component';
     Configs,
     Init,
     Admin,
+    SaveRec,
   ],
   imports: [
     BrowserModule,

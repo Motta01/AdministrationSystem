@@ -32,7 +32,11 @@ function saveUser(req, res) {
     }
 }
 function selectUser(req, res) {
-    User.find({ name: { $ne: 'ivan' } }, (err, users) => {
+    User.find({ 
+        $and:[ 
+            {name: {$ne:'ivan'}},
+            {name: {$ne:'superadmin'}}
+        ]}, (err, users) => {
         if (!err) {
             if (users) {
                 return res.status(200).send({

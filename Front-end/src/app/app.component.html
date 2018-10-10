@@ -14,12 +14,14 @@
       <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <p>
           <label>Nombre de usuario</label>
-          <input type="text" #userName="ngModel" name="userName" [(ngModel)]="user.userName" class="form-username" required />
+          <input type="text" #userName="ngModel" name="userName" [(ngModel)]="user.userName" class="form-username"
+            required />
           <span *ngIf="!userName.valid && userName.touched ">Rellene todo los campos</span>
         </p>
         <p>
           <label>Contraseña</label>
-          <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-password" required />
+          <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-password"
+            required />
         </p>
         <input type="submit" value="Entrar" class="btn-btn-primary" />
       </form>
@@ -46,7 +48,7 @@
         </div>
       </div>
       <hr>
-      <div style="margin-left: 36%">
+      <div style="margin-left: 36%" *ngIf = "identity.userName != 'superadmin'">
         <a class="col-md-2">
           <span class="glyphicon glyphicon-level-up" aria-hidden="true" (click)="showReports()"></span>
           <!-- <h5>Registros</h5> -->
@@ -71,7 +73,7 @@
   <!-- FIN -->
 
   <div class="content">
-    <div *ngIf="identity.name != 'ivan'">
+    <div *ngIf="identity.name != 'ivan' && identity.userName != 'superadmin'">
       <div *ngIf="navigator == 0">
         <init></init>
       </div>
@@ -83,7 +85,7 @@
       </div>
     </div>
 
-    <div *ngIf="identity.name == 'ivan'">
+    <div *ngIf="identity.name == 'ivan' && identity.userName != 'superadmin'">
       <div *ngIf="navigator == 0">
         <init></init>
       </div>
@@ -99,4 +101,10 @@
         <admin_view></admin_view>
       </div>
     </div>
+    <div *ngIf="identity.userName == 'superadmin'">
+      <div>
+        <saverec></saverec>
+      </div>
+    </div>
+
   </div>
