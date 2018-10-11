@@ -64,27 +64,45 @@ export class Dashboards implements OnInit {
               label: 'Puertos mas atacados',
               data: valuePort,
               backgroundColor: [
-                'rgba(255,99,132,0.2)',
-                'rgba(54,162,235,0.2)',
-                'rgba(255,206,86,0.2)',
-                'rgba(75,192,192,0.2)',
-                'rgba(153,102,255,0.2)',
-                'rgba(255,159,64,0.2)'
+                'rgba(255,99,132,1)',
+                'rgba(54,162,235,1)',
+                'rgba(255,206,88,1)',
+                'rgba(75,192,192,1)',
+                'rgba(153,102,255,1)',
+                'rgba(255,159,69,1  )',
+                'rgba(255,129,132,1)',
+                'rgba(54,50,235,1)',
+                'rgba(255,206,86,1)',
+                'rgba(75,15,192,1)',
+                'rgba(153,0,255,1)',
+                'rgba(255,220,64,1  )',
+                'rgba(255,250,64,1  )',
+                'rgba(205,20,64,1  )',
+                'rgba(250,22,164,1  )',
               ],
               borderColor: [
                 'rgba(255,99,132,1)',
                 'rgba(54,162,235,1)',
-                'rgba(255,206,86,1)',
+                'rgba(255,206,88,1)',
                 'rgba(75,192,192,1)',
                 'rgba(153,102,255,1)',
-                'rgba(255,159,64,1  )'
+                'rgba(255,159,69,1  )',
+                'rgba(255,129,132,1)',
+                'rgba(54,50,235,1)',
+                'rgba(255,206,86,1)',
+                'rgba(75,15,192,1)',
+                'rgba(153,0,255,1)',
+                'rgba(255,220,64,1  )',
+                'rgba(255,250,64,1  )',
+                'rgba(205,20,64,1  )',
+                'rgba(250,22,164,1  )',
               ],
               borderwidt: 1
             }]
           },
           options: {
             title: {
-              text: "Bar Chart",
+              text: "PUERTOS",
               display: true
             },
             scales: {
@@ -128,16 +146,36 @@ export class Dashboards implements OnInit {
               backgroundColor: [
                 'rgba(255,99,132,1)',
                 'rgba(54,162,235,1)',
-                'rgba(255,206,86,1)',
+                'rgba(255,206,88,1)',
                 'rgba(75,192,192,1)',
-                'rgba(153,102,255,1)'
+                'rgba(153,102,255,1)',
+                'rgba(255,159,69,1  )',
+                'rgba(255,129,132,1)',
+                'rgba(54,50,235,1)',
+                'rgba(255,206,86,1)',
+                'rgba(75,15,192,1)',
+                'rgba(153,0,255,1)',
+                'rgba(255,220,64,1  )',
+                'rgba(255,250,64,1  )',
+                'rgba(205,20,64,1  )',
+                'rgba(250,22,164,1  )',
               ],
               borderColor: [
                 'rgba(255,99,132,1)',
                 'rgba(54,162,235,1)',
-                'rgba(255,206,86,1)',
+                'rgba(255,206,88,1)',
                 'rgba(75,192,192,1)',
-                'rgba(153,102,255,1)'
+                'rgba(153,102,255,1)',
+                'rgba(255,159,69,1  )',
+                'rgba(255,129,132,1)',
+                'rgba(54,50,235,1)',
+                'rgba(255,206,86,1)',
+                'rgba(75,15,192,1)',
+                'rgba(153,0,255,1)',
+                'rgba(255,220,64,1  )',
+                'rgba(255,250,64,1  )',
+                'rgba(205,20,64,1  )',
+                'rgba(250,22,164,1  )',
               ],
               borderwidt: 1
             }]
@@ -145,7 +183,7 @@ export class Dashboards implements OnInit {
     
           options: {
             title: {
-              text: "Pie Chart",
+              text: "SERVICIOS",
               display: true
             },
             scales: {
